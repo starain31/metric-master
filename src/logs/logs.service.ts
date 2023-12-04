@@ -1,14 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { IDataSourceService } from '../data-source/data-source.service';
 
 @Injectable()
 export class LogsService {
+  constructor(readonly dataSourceService: IDataSourceService) {}
+
   findAll() {
-    return [{
-        id: 1,
-        label: 'service-1',
-        level: 'info',
-        message: 'Service 1 is running',
-        timestamp: new Date().toISOString(),
-    }];
+    return this.dataSourceService.findAll();
   }
 }
