@@ -4,9 +4,9 @@ import { FindLogsQuery } from './log.service.interface';
 
 @Injectable()
 export class LogsService {
-  constructor(private readonly dataSourceService: IDataSourceService) {}
+	constructor(private readonly dataSourceService: IDataSourceService) {}
 
-  findAll(query?: FindLogsQuery) {
-    return this.dataSourceService.findAll(query);
-  }
+	findAll(query?: FindLogsQuery) {
+		return this.dataSourceService.findAll(query);
+	}
 }

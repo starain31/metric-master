@@ -1,3 +1,3 @@
-export class FindLogsQuery{
-    level?: string;
+export class FindLogsQuery {
+	level?: string;
 }

@@ -4,7 +4,7 @@ import { MockDataSourceService } from './mock-data-source/data-source.mock.servi
 import { MockDataSourceModule } from './mock-data-source/mock-data-source.module';
 
 @Module({
-    imports: [MockDataSourceModule],
+	imports: [MockDataSourceModule],
 
 	providers: [
 		{
@@ -12,6 +12,6 @@ import { MockDataSourceModule } from './mock-data-source/mock-data-source.module
 			useExisting: MockDataSourceService,
 		},
 	],
-    exports: [IDataSourceService],
+	exports: [IDataSourceService],
 })
 export class DataSourceModule {}

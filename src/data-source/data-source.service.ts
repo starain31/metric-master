@@ -7,9 +7,9 @@ export abstract class IDataSourceService {
 }
 
 export class Log {
-    id: number;
-    label: string;
-    level: string;
-    timestamp: string;
-    message: string;
+	id: number;
+	label: string;
+	level: string;
+	timestamp: string;
+	message: string;
 }
