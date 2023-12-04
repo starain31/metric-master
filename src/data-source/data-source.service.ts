@@ -5,7 +5,7 @@ export abstract class IDataSourceService {
 	abstract findAll(): Promise<Log[]>;
 }
 
-class Log {
+export class Log {
     id: number;
     label: string;
     level: string;
