@@ -1,3 +1,4 @@
 export class FindLogsQuery {
-	timestamp: string;
+	level?: string;
+	timestamp?: string;
 }
