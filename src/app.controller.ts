@@ -7,7 +7,7 @@ export class AppController {
   constructor(private readonly logService: LogsService) {}
 
   @Get('/logs')
-  getHello(): Promise<Log[]> {
+  getLogs(): Promise<Log[]> {
     return this.logService.findAll();
   }
 }
