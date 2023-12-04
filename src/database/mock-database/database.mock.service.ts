@@ -48,7 +48,7 @@ const mockLogs = [
 ];
 
 @Injectable()
-export class MockDataSourceService {
+export class MockDatabaseService {
 	async findAll(query?: any) {
 		console.log(query);
 		

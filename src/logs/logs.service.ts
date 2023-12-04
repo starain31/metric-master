@@ -1,12 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { IDataSourceService } from '../data-source/data-source.service';
 import { FindLogsQuery } from './log.service.interface';
+import { IDataBaseService } from '../database/database.service';
 
 @Injectable()
 export class LogsService {
-	constructor(private readonly dataSourceService: IDataSourceService) {}
+	constructor(
+		private readonly dataBaseService: IDataBaseService,
+		) {}
 
 	findAll(query?: FindLogsQuery) {
-		return this.dataSourceService.findAll(query);
+		return this.dataBaseService.findAll(query);
 	}
 }

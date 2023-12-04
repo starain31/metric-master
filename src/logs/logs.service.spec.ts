@@ -1,20 +1,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { LogsService } from './logs.service';
-import { MockDataSourceService } from '../data-source/mock-data-source/data-source.mock.service';
-import { IDataSourceService } from '../data-source/data-source.service';
-import { MockDataSourceModule } from '../data-source/mock-data-source/mock-data-source.module';
+import { MockDatabaseService } from '../database/mock-database/database.mock.service';
+import { IDataBaseService } from '../database/database.service';
+import { MockDatabaseModule } from '../database/mock-database/mock-database.module';
 
 describe('LogsService', () => {
 	let service: LogsService;
 
 	beforeEach(async () => {
 		const module: TestingModule = await Test.createTestingModule({
-			imports: [MockDataSourceModule],
+			imports: [MockDatabaseModule],
 			providers: [
 				LogsService,
 				{
-					provide: IDataSourceService,
-					useClass: MockDataSourceService,
+					provide: IDataBaseService,
+					useClass: MockDatabaseService,
 				},
 			],
 		}).compile();
@@ -48,7 +48,7 @@ describe('LogsService', () => {
 	});
 
 	it('should return log from mock data source', async () => {
-		const firstLog = await service.findAll()[0];
+		const firstLog = (await service.findAll())[0];
 
 		expect(firstLog.id).toEqual(1);
 		expect(firstLog.label).toEqual('service-1');
