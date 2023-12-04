@@ -9,9 +9,7 @@ describe('LogsService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [
-        MockDataSourceModule
-      ],
+      imports: [MockDataSourceModule],
       providers: [
         LogsService,
         {
@@ -51,10 +49,32 @@ describe('LogsService', () => {
 
   it('should return log from mock data source', async () => {
     const firstLog = await service.findAll()[0];
-    
+
     expect(firstLog.id).toEqual(1);
     expect(firstLog.label).toEqual('service-1');
     expect(firstLog.level).toEqual('info');
     expect(firstLog.message).toEqual('Service 1 is running');
+  });
+
+  it('should return log with filter level error', async () => {
+    const level = 'info';
+    const logs = await service.findAll({ level });
+
+    expect(logs.length).toEqual(3);
+
+    for (const log of logs) {
+      expect(log.level).toEqual(level);
+    }
+  });
+
+  it('should return log with filter level error and label service-1', async () => {
+    const level = 'error';
+    const logs = await service.findAll({ level });
+
+    expect(logs.length).toEqual(3);
+
+    for (const log of logs) {
+      expect(log.level).toEqual(level);
+    }
   });
 });

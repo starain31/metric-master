@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
+import { FindLogsQuery } from 'src/logs/log.service.interface';
 
 @Injectable()
 export abstract class IDataSourceService {
-	abstract findAll(): Promise<Log[]>;
+	abstract findAll(query?: FindLogsQuery): Promise<Log[]>;
 }
 
 export class Log {
